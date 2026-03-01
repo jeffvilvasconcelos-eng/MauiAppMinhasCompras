@@ -12,7 +12,7 @@ namespace MauiAppMinhasCompras.Helpers
     {
         readonly SQLiteAsyncConnection _conn;
 
-        piblic SQLDtabaseHelper(string path)
+        public SQLDtabaseHelper(string path)
             {
             _conn = new SQLiteAsyncConnection(path);
             _conn.CreateTableAsync<Produto>().Wait();
