@@ -8,8 +8,22 @@ namespace MauiAppMinhasCompras
         // _db = Campo
 
         public static SQLiteDatabaseHelper Db
-            // Db = Propriedade
+        // Db = Propriedade
+        {
+            get
+             {
+                if (_db == null)
+                {
+                    string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+                        LocalApplicationData), "banco_sqlite_compras.db3");
 
+                    _db = new SQLiteDatabaseHelper(path);
+                }
+                return _db;
+            }
+
+
+        }
         public App()
         {
             InitializeComponent();
