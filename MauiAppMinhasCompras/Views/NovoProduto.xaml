@@ -12,7 +12,7 @@
     </ContentPage.ToolbarItems>
     
     <VerticalStackLayout Spacing="10" Padding="10">
-        <Label Text="Desccrição do Produto:" />
+        <Label Text="Descrição do Produto:" />
         <Entry
             x:Name="txt_descricao" />
         <Label Text="Quantidade:" />
