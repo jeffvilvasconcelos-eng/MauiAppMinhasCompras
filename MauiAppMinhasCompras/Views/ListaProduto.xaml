@@ -28,7 +28,8 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
-                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
+
+                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked" /> 
                         </ViewCell.ContextActions>
                         <Grid ColumnDefinitions="*,*,*,*,*, *">
                             <Label Grid.Column="0" Text="{Binding Id}" />
