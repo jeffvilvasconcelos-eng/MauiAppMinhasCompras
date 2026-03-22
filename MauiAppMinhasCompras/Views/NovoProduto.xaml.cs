@@ -25,6 +25,7 @@ namespace MauiAppMinhasCompras.Views
 
                 await App.Db.Insert(p);
                 await DisplayAlert("Sucesso", "Produto cadastrado com sucesso!", "OK");
+                await Navigation.PopAsync();
 
             }
             catch (Exception ex)
