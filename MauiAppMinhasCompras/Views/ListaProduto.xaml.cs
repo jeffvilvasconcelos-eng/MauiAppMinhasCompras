@@ -70,17 +70,21 @@ public partial class ListaProduto : ContentPage
     }
     private void ToolbarItem_Clicked_1(object sender, EventArgs e)
 {
-    try
-    {
+        /*try
+        {
+            double soma = lista.Sum(i => i.Total);
+            string msg = $"O total é {soma:C}";
+        }
+        catch (Exception ex)
+        {
+            String Message = $"Ops, ocorreu um erro: {ex.Message}";
+            DisplayAlert("Total dos Produtos", Message, "OK");
+        }*/
+
         double soma = lista.Sum(i => i.Total);
         string msg = $"O total é {soma:C}";
+        DisplayAlert("Total dos Produtos", msg, "OK");
     }
-    catch (Exception ex)
-    {
-        String Message = $"Ops, ocorreu um erro: {ex.Message}";
-        DisplayAlert("Total dos Produtos", Message, "OK");
-    }
-}
 
 private async void MenuItem_Clicked(object sender, EventArgs e)
 {
