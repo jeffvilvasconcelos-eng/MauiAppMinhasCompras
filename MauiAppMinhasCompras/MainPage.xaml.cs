@@ -1,4 +1,6 @@
-﻿namespace MauiAppMinhasCompras
+﻿using MauiAppMinhasCompras.Models;
+
+namespace MauiAppMinhasCompras
 {
     public partial class MainPage : ContentPage
     {
@@ -19,6 +21,23 @@
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
+        }
+
+        private async void OnCategoriaSelecionada(object sender, EventArgs e)
+        {
+            if (filtroCategoria.SelectedItem == null)
+                return;
+
+            var categoria = filtroCategoria.SelectedItem.ToString();
+
+            List<Produto> lista;
+
+            if (categoria == "Todos")
+                lista = await App.Db.GetAll();
+            else
+                lista = await App.Db.GetByCategoria(categoria);
+
+            listaProdutos.ItemsSource = lista;
         }
     }
 }

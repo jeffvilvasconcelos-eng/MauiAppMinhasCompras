@@ -22,6 +22,8 @@ namespace MauiAppMinhasCompras.Views
                     Quantidade = Convert.ToDouble(txt_quantidade.Text),
                     Preco = Convert.ToDouble(txt_preco.Text)
                 };
+                p.Categoria = pickerCategoria.SelectedItem.ToString();
+                
 
                 await App.Db.Insert(p);
                 await DisplayAlert("Sucesso", "Produto cadastrado com sucesso!", "OK");
@@ -32,6 +34,7 @@ namespace MauiAppMinhasCompras.Views
             {
                 await DisplayAlert("Ops", ex.Message, "OK");
             }
+
         }
     }
 }

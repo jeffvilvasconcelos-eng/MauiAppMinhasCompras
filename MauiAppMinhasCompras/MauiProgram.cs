@@ -21,5 +21,7 @@ namespace MauiAppMinhasCompras
 
             return builder.Build();
         }
+
+
     }
 }
