@@ -10,6 +10,7 @@ namespace MauiAppMinhasCompras.Models
     public class Produto
     {
         string _descricao;
+        double _quantidade;
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Descricao { get => _descricao; 
@@ -23,9 +24,20 @@ namespace MauiAppMinhasCompras.Models
             }
         
         }
-        public double Quantidade { get; set; }
-                   
-        public double Preco { get; set; }
+        public double Quantidade
+        {
+            get => _quantidade;
+
+            set
+            {
+                if (value > 0)
+                {
+                    throw new Exception("Insira a quantidade do produto.");
+                }
+                _quantidade = value;
+            }
+        }
+public double Preco { get; set; }
         public double Total { get => Quantidade * Preco;  }
         public string Categoria { get; set; }
 

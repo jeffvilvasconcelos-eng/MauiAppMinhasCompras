@@ -21,11 +21,9 @@
         <Label Text="Preço Total:" />
         <Entry
             x:Name="txt_preco" Keyboard="Numeric" />
-
-
+       
         
-        
-        <Picker Title ="Categoria" x:Name="pickerCategoria">   
+        <Picker Title ="Categoria:" x:Name="pickerCategoria">   
         
             <Picker.Items>
                 <x:String>Alimentos</x:String>
