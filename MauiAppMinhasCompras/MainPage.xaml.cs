@@ -47,7 +47,7 @@ namespace MauiAppMinhasCompras
             String msg = "";
             foreach (var item in dados)
             {
-                msg += $"{item.Key}: {item.Value:F2}\n";
+                msg += $"{item.Categoria}: {item.TotalGasto:F2}\n";
             }
             await DisplayAlert("Relatório de Gastos por Categoria", msg, "OK");
         }

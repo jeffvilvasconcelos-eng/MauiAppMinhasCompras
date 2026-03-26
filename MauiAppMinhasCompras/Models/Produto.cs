@@ -65,5 +65,12 @@ namespace MauiAppMinhasCompras.Models
             return produtos.GroupBy(p => p.Categoria)
                            .ToDictionary(g => g.Key, g => g.Sum(p => p.Preco * p.Quantidade));
         }
+        public class RelatorioCategoria
+        {
+            public string Categoria { get; set; }
+            public double TotalGasto { get; set; }
+        }
+
     }
+
 }
