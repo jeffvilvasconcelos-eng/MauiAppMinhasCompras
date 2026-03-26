@@ -13,6 +13,8 @@ namespace MauiAppMinhasCompras.Helpers
     {
         readonly SQLiteAsyncConnection _conn;
 
+        public object Db { get; private set; }
+
         public SQLiteDatabaseHelper(string path)
             {
             _conn = new SQLiteAsyncConnection(path);
@@ -58,5 +60,16 @@ namespace MauiAppMinhasCompras.Helpers
                         .ToListAsync();
         }
 
+        public async Task<Dictionary<string, double>> GetTotalPorCategoria()
+        {
+            var produtos = await _conn.Table<Produto>().ToListAsync();
+
+            return produtos
+                .Where(p => !string.IsNullOrEmpty(p.Categoria))
+                .GroupBy(p => p.Categoria)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Sum(p => p.Preco * p.Quantidade));
+        }
     }
 }

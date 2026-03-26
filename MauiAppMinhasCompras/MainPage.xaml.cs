@@ -39,5 +39,18 @@ namespace MauiAppMinhasCompras
 
             listaProdutos.ItemsSource = lista;
         }
+
+        private async void OnRelatorioClicked(object sender, EventArgs e)
+        {
+            var dados = await App.Db.GetTotalPorCategoria();
+
+            String msg = "";
+            foreach (var item in dados)
+            {
+                msg += $"{item.Key}: {item.Value:F2}\n";
+            }
+            await DisplayAlert("Relatório de Gastos por Categoria", msg, "OK");
+        }
     }
 }
+
