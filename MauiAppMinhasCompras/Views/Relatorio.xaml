@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.Relatorio"
+             Title="Relatorio">
+    <VerticalStackLayout Padding="10">
+        <Label 
+            Text="Relatório por Categoria"
+            FontSize="20" />
+        <Button Text="Carregar Relatório"
+                Clicked="OnCarregarRelatorio" />
+
+        <ListView x:Name="listaCategoria">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Categoria}"
+                              Detail="{Binding Total}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+
+        <Label Text="Relatório por Período" />
+        <DatePicker x:Name="dtInicio" />
+        <DatePicker x:Name="dtFim" />
+
+       
+
+        <ListView x:Name="listaPeriodo">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Descricao}"
+                              Detail="{Binding DataCadastro}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="lst_relatorio">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Categoria}" />
+                            <Label Grid.Column="1" Text="{Binding Total, StringFormat='R$ {0:F2}'}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </VerticalStackLayout>
+</ContentPage>

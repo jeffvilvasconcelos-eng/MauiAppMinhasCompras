@@ -1,5 +1,6 @@
 ﻿using MauiAppMinhasCompras.Helpers;
 
+
 namespace MauiAppMinhasCompras
 {
     public partial class App : Application

@@ -11,6 +11,7 @@ namespace MauiAppMinhasCompras
             InitializeComponent();
         }
 
+
         private void OnCounterClicked(object? sender, EventArgs e)
         {
             count++;
@@ -22,35 +23,5 @@ namespace MauiAppMinhasCompras
 
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
-
-        private async void OnCategoriaSelecionada(object sender, EventArgs e)
-        {
-            if (filtroCategoria.SelectedItem == null)
-                return;
-
-            var categoria = filtroCategoria.SelectedItem.ToString();
-
-            List<Produto> lista;
-
-            if (categoria == "Todos")
-                lista = await App.Db.GetAll();
-            else
-                lista = await App.Db.GetByCategoria(categoria);
-
-            listaProdutos.ItemsSource = lista;
-        }
-
-        private async void OnRelatorioClicked(object sender, EventArgs e)
-        {
-            var dados = await App.Db.GetTotalPorCategoria();
-
-            String msg = "";
-            foreach (var item in dados)
-            {
-                msg += $"{item.Categoria}: {item.TotalGasto:F2}\n";
-            }
-            await DisplayAlert("Relatório de Gastos por Categoria", msg, "OK");
-        }
     }
 }
-

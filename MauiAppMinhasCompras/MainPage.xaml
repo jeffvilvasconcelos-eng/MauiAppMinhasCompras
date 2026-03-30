@@ -5,26 +5,31 @@
 
     <VerticalStackLayout Padding="10">
         <Button x:Name="CounterBtn" Text="Teste" />
-        <Button Text="Ver Relatório" Clicked="OnRelatorioClicked" />
+        
 
         <!-- FILTRO -->
         <Picker Title="Filtrar por Categoria"
-                x:Name="filtroCategoria"
-                SelectedIndexChanged="OnCategoriaSelecionada">
+                x:Name="filtroCategoria">
+
 
             <Picker.Items>
                 <x:String>Todos</x:String>
                 <x:String>Alimentos</x:String>
                 <x:String>Higiene</x:String>
                 <x:String>Limpeza</x:String>
+                <x:String>Bazar</x:String>
             </Picker.Items>
         </Picker>
 
-        <!-- LISTA -->
+        <Entry x:Name="txtFiltroCategoria"
+               Placeholder="Digite a Categoria" />
+
+       
+        
         <ListView x:Name="listaProdutos">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Descricao}" 
+                    <TextCell Text="{Binding Descrição}" 
                               Detail="{Binding Categoria}" />
                 </DataTemplate>
             </ListView.ItemTemplate>

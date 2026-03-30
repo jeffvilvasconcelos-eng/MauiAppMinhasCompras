@@ -1,5 +1,6 @@
 using MauiAppMinhasCompras.Models;
 using System.Collections.ObjectModel;
+using System.Collections.Generic; // Adicionado para List<T>
 using System.Threading.Tasks;
 
 namespace MauiAppMinhasCompras.Views;
@@ -10,9 +11,9 @@ public partial class ListaProduto : ContentPage
 
     public ListaProduto()
     {
-        InitializeComponent();
+          InitializeComponent();
 
-        lst_produtos.ItemsSource = lista;
+          lst_produtos.ItemsSource = lista;
     }
 
     protected async override void OnAppearing()
@@ -48,39 +49,27 @@ public partial class ListaProduto : ContentPage
         try
         {
             String q = e.NewTextValue;
-
-
-            lst_produtos.IsRefreshing = true;
+                     
              
 
-        lista.Clear();
+          lista.Clear();
 
-        List<Produto> tmp = await App.Db.Search(q);
+          List<Produto> tmp = await App.Db.Search(q);
 
-        tmp.ForEach(i => lista.Add(i));
+          tmp.ForEach(i => lista.Add(i));
     }
         catch (Exception ex)
-        {
+         {
             await DisplayAlert("Ops", ex.Message, "OK");
 }
             finally
-        {
+         {
             lst_produtos.IsRefreshing = false;
-        }
+          }
     }
     private void ToolbarItem_Clicked_1(object sender, EventArgs e)
 {
-        /*try
-        {
-            double soma = lista.Sum(i => i.Total);
-            string msg = $"O total é {soma:C}";
-        }
-        catch (Exception ex)
-        {
-            String Message = $"Ops, ocorreu um erro: {ex.Message}";
-            DisplayAlert("Total dos Produtos", Message, "OK");
-        }*/
-
+      
         double soma = lista.Sum(i => i.Total);
         string msg = $"O total é {soma:C}";
         DisplayAlert("Valor Total dos Produtos", msg, "OK");
@@ -139,5 +128,8 @@ private async void lst_produtos_Refreshing(object sender, EventArgs e)
     {
         lst_produtos.IsRefreshing = false;
     }
+  
 }
+
+  
 }
