@@ -50,6 +50,7 @@ namespace MauiAppMinhasCompras.Views
                 await DisplayAlert("Ops", ex.Message, "OK");
             }
         }
-
+    }
+}
 
     
