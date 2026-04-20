@@ -5,7 +5,7 @@
 
     <VerticalStackLayout Padding="10">
         <Button x:Name="CounterBtn" Text="Teste" />
-        
+
 
         <!-- FILTRO -->
         <Picker Title="Filtrar por Categoria"
@@ -13,7 +13,6 @@
 
 
             <Picker.Items>
-                <x:String>Todos</x:String>
                 <x:String>Alimentos</x:String>
                 <x:String>Higiene</x:String>
                 <x:String>Limpeza</x:String>
@@ -24,17 +23,39 @@
         <Entry x:Name="txtFiltroCategoria"
                Placeholder="Digite a Categoria" />
 
-       
-        
-        <ListView x:Name="listaProdutos">
-            <ListView.ItemTemplate>
+
+
+        <CollectionView x:Name="listaProdutos">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Descrição}" 
-                              Detail="{Binding Categoria}" />
+                    <Frame BorderColor="Gray" Padding="10" Margin="5">
+                        <VerticalStackLayout>
+
+                            <!-- DESCRIÇÃO -->
+                            <Label Text="{Binding Descricao}" 
+                           FontAttributes="Bold"/>
+
+                            <!-- CATEGORIA -->
+                            <Label Text="{Binding Categoria}" />
+
+                            <!-- PREÇO -->
+                            <Label Text="{Binding Preco, StringFormat='Preço: R$ {0:F2}'}" />
+
+                            <!-- QUANTIDADE -->
+                            <Label Text="{Binding Quantidade, StringFormat='Qtd: {0}'}" />
+
+                            <!-- TOTAL -->
+                            <Label Text="{Binding Total, StringFormat='Total: R$ {0:F2}'}" />
+
+                            <!-- ✅ DATA (CORREÇÃO PRINCIPAL) -->
+                            <Label Text="{Binding DataCadastro, StringFormat='Data: {0:dd/MM/yyyy}'}"
+                           FontSize="12"
+                           TextColor="Gray"/>
+
+                        </VerticalStackLayout>
+                    </Frame>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
-
 </ContentPage>
