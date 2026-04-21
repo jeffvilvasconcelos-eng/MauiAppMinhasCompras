@@ -8,45 +8,23 @@
             Text="Relatório por Categoria"
             FontSize="20" />
         <Button Text="Carregar Relatório"
-                Clicked="OnCarregarRelatorio" />
+                Clicked="Button_Clicked" />
 
-        <ListView x:Name="listaCategoria">
-            <ListView.ItemTemplate>
+        <CollectionView x:Name="listaCategoria">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Categoria}"
-                              Detail="{Binding Total}" />
+                    <Frame BorderColor="Gray" Padding="10" Margin="5">
+                        <HorizontalStackLayout>
+
+
+                            <Label Text="{Binding Categoria}" FontAttributes="Bold" />
+
+                            <Label Text="{Binding Total, StringFormat='R$ {0:F2}'}" />
+                        </HorizontalStackLayout>
+                    </Frame>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-            
-        </ListView>
-
-        <Label Text="Relatório por Período" />
-        <DatePicker x:Name="dtInicio" />
-        <DatePicker x:Name="dtFim" />
-
-       
-
-        <ListView x:Name="listaPeriodo">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Descricao}"
-                              Detail="{Binding DataCadastro}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <ListView x:Name="lst_relatorio">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid ColumnDefinitions="*,*">
-                            <Label Text="{Binding Categoria}" />
-                            <Label Grid.Column="1" Text="{Binding Total, StringFormat='R$ {0:F2}'}" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
     </VerticalStackLayout>
 </ContentPage>

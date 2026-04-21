@@ -34,6 +34,7 @@ namespace MauiAppMinhasCompras
 
             //MainPage = new AppShell();
             MainPage = new NavigationPage(new Views.ListaProduto());
+            //MainPage = new NavigationPage(new MainPage());
         }
     }
 }

@@ -36,7 +36,7 @@
             <Entry
             x:Name="txt_preco" Keyboard="Numeric" />
             <!-- data-->
-            <!-- <Label Text="Data da Compra" /> -->
+            <Label Text="Data da Compra" /> 
             <DatePicker x:Name="dtData" />
 
         </VerticalStackLayout>

@@ -9,35 +9,35 @@ namespace MauiAppMinhasCompras.Views
 {
     public partial class Relatorio : ContentPage
     {
-        ObservableCollection<CategoriaTotal> listaCategorias = new();
+        private object listaRelatorio;
+
         public Relatorio()
         {
             InitializeComponent();
         }
 
-        private async void OnCarregarRelatorio(object sender, EventArgs e)
-        {
-            // Implemente a lógica para carregar o relatório aqui
-            var dados = await App.Db.GetTotalPorCategoria();
-            lst_relatorio.ItemsSource = dados;
-        }
-
-       
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            var dados = await App.Db.GetTotalPorCategoria();
+            var produtos = await App.Db.GetAll();
 
-            listaCategorias.Clear();
+            var relatorio = produtos
+                .GroupBy(p => p.Categoria)
+                .Select(g => new RelatorioCategoria
+                {
+                    Categoria = g.Key,
+                    Total = g.Sum(p => p.Total)
+                })
+                .ToList();
 
-            foreach (var item in dados)
-            {
-                listaCategorias.Add(item);
-            }
-
-            lst_relatorio.ItemsSource = listaCategorias;
+            listaRelatorio = relatorio;
         }
-    }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+    }
 }

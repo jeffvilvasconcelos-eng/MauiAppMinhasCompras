@@ -9,10 +9,12 @@
 
         <!-- FILTRO -->
         <Picker Title="Filtrar por Categoria"
-                x:Name="filtroCategoria">
+                x:Name="filtroCategoria"
+                 SelectedIndexChanged="OnFiltroCategoriaChanged">
 
 
             <Picker.Items>
+                <x:String>Todos</x:String>
                 <x:String>Alimentos</x:String>
                 <x:String>Higiene</x:String>
                 <x:String>Limpeza</x:String>
@@ -47,7 +49,7 @@
                             <!-- TOTAL -->
                             <Label Text="{Binding Total, StringFormat='Total: R$ {0:F2}'}" />
 
-                            <!-- ✅ DATA (CORREÇÃO PRINCIPAL) -->
+                            <!--  DATA -->
                             <Label Text="{Binding DataCadastro, StringFormat='Data: {0:dd/MM/yyyy}'}"
                            FontSize="12"
                            TextColor="Gray"/>
@@ -55,7 +57,7 @@
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
+            </CollectionView.ItemTemplate> 
         </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
