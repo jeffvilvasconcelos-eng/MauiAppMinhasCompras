@@ -22,8 +22,7 @@
                    Margin="10, 0, 10, 0"
                    Placeholder="Busca de Produtos"
                    TextChanged="txt_search_TextChanged"/>
-
-        
+          
         <Frame Padding="0" Margin="10" VerticalOptions="FillAndExpand">
             <ListView x:Name="lst_produtos"
                       IsPullToRefreshEnabled="True"
