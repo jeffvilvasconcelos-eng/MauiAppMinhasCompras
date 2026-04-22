@@ -9,7 +9,7 @@ namespace MauiAppMinhasCompras.Views
 {
     public partial class Relatorio : ContentPage
     {
-        private object listaRelatorio;
+       
 
         public Relatorio()
         {
@@ -31,13 +31,9 @@ namespace MauiAppMinhasCompras.Views
                 })
                 .ToList();
 
-            listaRelatorio = relatorio;
+            listaRelatorio.ItemsSource = relatorio;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
+      
     }
 }

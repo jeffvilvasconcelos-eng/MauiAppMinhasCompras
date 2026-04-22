@@ -4,22 +4,24 @@
              x:Class="MauiAppMinhasCompras.Views.Relatorio"
              Title="Relatorio">
     <VerticalStackLayout Padding="10">
-        <Label 
-            Text="Relatório por Categoria"
-            FontSize="20" />
-        <Button Text="Carregar Relatório"
-                Clicked="Button_Clicked" />
+        <Label Text="Total por Categoria"
+           FontSize="18"
+           FontAttributes="Bold"
+           HorizontalOptions="Center"/>
 
-        <CollectionView x:Name="listaCategoria">
+        <CollectionView x:Name="listaRelatorio">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame BorderColor="Gray" Padding="10" Margin="5">
                         <HorizontalStackLayout>
 
+                            <Label Text="{Binding Categoria}"
+                               FontAttributes="Bold"
+                               HorizontalOptions="StartAndExpand"/>
 
-                            <Label Text="{Binding Categoria}" FontAttributes="Bold" />
+                            <Label Text="{Binding Total, StringFormat='R$ {0:F2}'}"
+                               HorizontalOptions="End"/>
 
-                            <Label Text="{Binding Total, StringFormat='R$ {0:F2}'}" />
                         </HorizontalStackLayout>
                     </Frame>
                 </DataTemplate>
