@@ -6,9 +6,11 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
-        <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />       
+        <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Relatório" Clicked="OnAbrirRelatorio" />
     </ContentPage.ToolbarItems>
 
+   
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
@@ -18,6 +20,7 @@
     </ContentPage.Resources>
 
     <StackLayout>
+        
         <SearchBar x:Name="txt_search"
                    Margin="10, 0, 10, 0"
                    Placeholder="Busca de Produtos"
@@ -37,14 +40,8 @@
                     <x:String>Limpeza</x:String>
                     <x:String>Bazar</x:String>
                 </Picker.Items>
-            </Picker>
-
-            <!-- BOTÃO RELATÓRIO -->
-            <Button Text="Ver Relatório"
-            Clicked="OnAbrirRelatorio"
-            BackgroundColor="orange"
-            TextColor="White"/>
-
+             </Picker>
+           
             <!-- LISTA -->
             <CollectionView x:Name="listaProdutos">
                 <CollectionView.ItemTemplate>
@@ -78,7 +75,7 @@
                       Refreshing="lst_produtos_Refreshing"
                       ItemSelected="lst_produtos_ItemSelected">
                 <ListView.Header>
-                    <Grid ColumnDefinitions="30, 200, 80, 50, 90, 100, 80"
+                    <Grid ColumnDefinitions="30, 200, 80, 50, 90, 100"
                           BackgroundColor="orange">
                         <Label Grid.Column="0" Text="ID" Padding="5" FontAttributes="Bold" />
                         <Label Grid.Column="1" Text="Descrição" FontAttributes="Bold" />
@@ -86,7 +83,7 @@
                         <Label Grid.Column="3" Text="Qnt" FontAttributes="Bold" />
                         <Label Grid.Column="4" Text="Total" FontAttributes="Bold" />
                         <Label Grid.Column="5" Text="Categoria" FontAttributes="Bold" />
-                        <Label Grid.Column="6" Text="Data" FontAttributes="Bold" />
+                    
                     </Grid>
                 </ListView.Header>
                 <ListView.ItemTemplate>
@@ -95,14 +92,13 @@
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
                             </ViewCell.ContextActions>
-                            <Grid ColumnDefinitions="30, 200, 80, 50, 90, 100, 80">
+                            <Grid ColumnDefinitions="30, 200, 80, 50, 90, 100">
                                 <Label Grid.Column="0" Text="{Binding Id}" Padding="5" />
                                 <Label Grid.Column="1" Text="{Binding Descricao}" />
                                 <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:c}'}" />
                                 <Label Grid.Column="3" Text="{Binding Quantidade}" />
                                 <Label Grid.Column="4" Text="{Binding Total, StringFormat='{}{0:c}'}" />
-                                <Label Grid.Column="5" Text="{Binding Categoria}" />
-                                <Label Grid.Column="6" Text="{Binding Data}" />
+                                <Label Grid.Column="5" Text="{Binding Categoria}" />                         
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
